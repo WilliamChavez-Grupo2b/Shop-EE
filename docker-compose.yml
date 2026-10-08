@@ -1,0 +1,41 @@
+services:
+  db-main:
+    image: postgres:16
+    environment: { POSTGRES_DB: shopp, POSTGRES_USER: shopp, POSTGRES_PASSWORD: shopp }
+    ports: ["5432:5432"]
+    volumes: [db_main:/var/lib/postgresql/data]
+
+  db-shipping:
+    image: postgres:16
+    environment: { POSTGRES_DB: shipping, POSTGRES_USER: shipping, POSTGRES_PASSWORD: shipping }
+    ports: ["5433:5432"]
+    volumes: [db_shipping:/var/lib/postgresql/data]
+
+  mqtt:
+    image: eclipse-mosquitto:2
+    ports: ["1883:1883"]
+    volumes: ["../mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"]
+
+  shopp-api:
+    build: ../shopp-api
+    env_file: .env
+    environment:
+      DB_URL: postgres://shopp:shopp@db-main:5432/shopp
+      SHIPPING_URL: http://shopp-shipping:3000
+      PORT: 8080
+      TYPEORM_SYNCHRONIZE: "true"
+    ports: ["8080:8080"]
+    depends_on: [db-main, shopp-shipping]
+
+  shopp-shipping:
+    build: ./shopp-shipping
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://shipping:shipping@db-shipping:5432/shipping
+      MAIN_API_URL: http://shopp-api:8080
+      MQTT_URL: mqtt://mqtt:1883
+      TYPEORM_SYNCHRONIZE: "true"
+    ports: ["3000:3000"]
+    depends_on: [db-shipping, mqtt]
+
+volumes: { db_main: {}, db_shipping: {} }
