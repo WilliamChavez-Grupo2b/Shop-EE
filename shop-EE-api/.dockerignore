@@ -1,6 +1,0 @@
-node_modules
-dist
-coverage
-target
-.git
-npm-debug.log*

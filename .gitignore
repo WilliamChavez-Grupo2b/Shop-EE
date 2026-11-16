@@ -1,7 +1,1 @@
-.env
-node_modules/
-dist/
-target/
-*.log
-.env.example
-mosquitto.conf
+node_modules
