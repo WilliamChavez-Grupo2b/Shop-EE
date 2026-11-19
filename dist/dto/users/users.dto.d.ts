@@ -1,10 +1,16 @@
 export declare class CreateUserDto {
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
-    role: string;
+    nickname: string;
+    role?: string;
+    avatar?: string;
 }
 export declare class UpdateUserDto {
-    name?: string;
+    firstName?: string;
+    lastName?: string;
     email?: string;
+    nickname?: string;
     role?: string;
+    avatar?: string;
 }

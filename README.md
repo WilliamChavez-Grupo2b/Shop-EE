@@ -210,6 +210,90 @@ npm run test:cov
 npm run test:e2e
 ```
 
+### Pruebas de API con Postman
+
+Postman permite probar los endpoints del backend sin utilizar el frontend.
+
+1. Inicia PostgreSQL y el backend:
+
+   ```powershell
+   docker compose up -d db
+   npm run start:dev
+   ```
+
+2. Abre Postman y crea un entorno llamado `Shop-EE Local`.
+3. Agrega una variable llamada `base_url` con el valor `http://localhost:3000`.
+4. Crea una nueva colección llamada `Shop-EE API`.
+5. Usa `{{base_url}}` como prefijo en todas las solicitudes.
+
+Ejemplos de solicitudes:
+
+| Operación | Método | URL | Cuerpo JSON |
+| --- | --- | --- | --- |
+| Verificar el servidor | `GET` | `{{base_url}}/` | Ninguno |
+| Listar productos | `GET` | `{{base_url}}/products` | Ninguno |
+| Obtener un producto | `GET` | `{{base_url}}/products/1` | Ninguno |
+| Crear producto | `POST` | `{{base_url}}/products` | `{"name":"Teclado","category":"electronics","value":45.99,"stock":20}` |
+| Actualizar producto | `PUT` | `{{base_url}}/products/1` | `{"name":"Teclado actualizado","category":"electronics","value":49.99,"stock":18}` |
+| Eliminar producto | `DELETE` | `{{base_url}}/products/1` | Ninguno |
+
+Ejemplos para los demás recursos:
+
+- Categorías: `GET/POST/PUT/DELETE {{base_url}}/categories`
+- Pedidos: `GET/POST/PUT/DELETE {{base_url}}/orders`
+- Pagos: `GET/POST/PUT/DELETE {{base_url}}/payment`
+- Envíos: `GET/POST/PUT/DELETE {{base_url}}/shipment`
+- Usuarios: `GET/POST/PUT/DELETE {{base_url}}/users`
+
+Ejemplo para crear un pedido:
+
+```http
+POST {{base_url}}/orders
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 2,
+  "totalValue": 1799.98,
+  "status": "pending"
+}
+```
+
+Ejemplo para crear un pago:
+
+```http
+POST {{base_url}}/payment
+Content-Type: application/json
+
+{
+  "amount": 1799.98,
+  "method": "card",
+  "status": "pending"
+}
+```
+
+Ejemplo para crear un envío:
+
+```http
+POST {{base_url}}/shipment
+Content-Type: application/json
+
+{
+  "orderId": 1,
+  "tracking": "TRK-POSTMAN-001",
+  "address": "Calle Principal 123",
+  "status": "pending"
+}
+```
+
+Para las solicitudes con cuerpo JSON, selecciona **Body**, marca **raw** y elige el formato **JSON**. En las respuestas esperadas:
+
+- `200 OK`: consulta o actualización completada.
+- `201 Created`: registro creado.
+- `204 No Content`: registro eliminado.
+- `404 Not Found`: el identificador no existe.
+- `400 Bad Request`: el cuerpo no cumple las validaciones del DTO.
+
 Para compilar y validar el backend:
 
 ```powershell

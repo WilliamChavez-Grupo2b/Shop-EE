@@ -12,44 +12,97 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateUserDto = exports.CreateUserDto = void 0;
 const class_validator_1 = require("class-validator");
 class CreateUserDto {
-    name;
+    firstName;
+    lastName;
     email;
+    nickname;
     role;
+    avatar;
 }
 exports.CreateUserDto = CreateUserDto;
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(2),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MaxLength)(50),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "name", void 0);
+], CreateUserDto.prototype, "firstName", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MaxLength)(50),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "lastName", void 0);
 __decorate([
     (0, class_validator_1.IsEmail)(),
+    (0, class_validator_1.MaxLength)(100),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MinLength)(3),
+    (0, class_validator_1.MaxLength)(50),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "nickname", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.MaxLength)(50),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "role", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.MaxLength)(255),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "avatar", void 0);
 class UpdateUserDto {
-    name;
+    firstName;
+    lastName;
     email;
+    nickname;
     role;
+    avatar;
 }
 exports.UpdateUserDto = UpdateUserDto;
 __decorate([
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(2),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MaxLength)(50),
     __metadata("design:type", String)
-], UpdateUserDto.prototype, "name", void 0);
+], UpdateUserDto.prototype, "firstName", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MaxLength)(50),
+    __metadata("design:type", String)
+], UpdateUserDto.prototype, "lastName", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsEmail)(),
+    (0, class_validator_1.MaxLength)(100),
     __metadata("design:type", String)
 ], UpdateUserDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MinLength)(3),
+    (0, class_validator_1.MaxLength)(50),
+    __metadata("design:type", String)
+], UpdateUserDto.prototype, "nickname", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.MaxLength)(50),
     __metadata("design:type", String)
 ], UpdateUserDto.prototype, "role", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.MaxLength)(255),
+    __metadata("design:type", String)
+], UpdateUserDto.prototype, "avatar", void 0);
 //# sourceMappingURL=users.dto.js.map
