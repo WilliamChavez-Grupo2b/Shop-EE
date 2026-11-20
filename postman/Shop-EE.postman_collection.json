@@ -1,0 +1,650 @@
+{
+  "info": {
+    "name": "Shop-EE API",
+    "description": "Colección completa para probar el backend NestJS de Shop-EE en Postman.\n\nEl backend corre en http://localhost:3000 (por eso todas las rutas usan la variable base_url).\n\nIMPORTANTE para PUT: el body debe ser JSON crudo (raw -> JSON).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "App",
+      "item": [
+        {
+          "name": "GET / (hello)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": [
+                "{{base_url}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "GET products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/products",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET product por id",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/products/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Teclado mecánico\",\n  \"category\": \"Periféricos\",\n  \"value\": 45000,\n  \"stock\": 10\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/products",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Teclado mecánico RGB\",\n  \"category\": \"Periféricos\",\n  \"value\": 52000,\n  \"stock\": 8\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/products/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE product",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/products/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "GET users",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET user por id",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/users/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST user",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Ana\",\n  \"lastName\": \"Gómez\",\n  \"email\": \"ana@example.com\",\n  \"nickname\": \"anaG\",\n  \"role\": \"user\",\n  \"avatar\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT user",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Ana María\",\n  \"email\": \"ana.gomez@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE user",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/users/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "GET categories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET category por id",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/categories/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Periféricos\",\n  \"description\": \"Teclados, mouses y auriculares\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories"
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Periféricos gaming\",\n  \"description\": \"Accesorios para gaming\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/categories/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE category",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/categories/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "GET orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET order por id",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/orders/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"userId\": 1,\n  \"quantity\": 2,\n  \"totalValue\": 90000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT order",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 3,\n  \"totalValue\": 135000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/orders/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE order",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/orders/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "GET payments",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/payment",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET payment por id",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/payment/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"orderId\": 1,\n  \"amount\": 90000,\n  \"method\": \"tarjeta\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/payment",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment"
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT payment",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 135000,\n  \"method\": \"transferencia\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/payment/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE payment",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/payment/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Shipments",
+      "item": [
+        {
+          "name": "GET shipments",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/shipment",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "shipment"
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET shipment por id",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/shipment/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "shipment",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST shipment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1,\n  \"tracking\": \"TRACK-0001\",\n  \"address\": \"Calle 10 #5-25, Bogotá\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/shipment",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "shipment"
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT shipment",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking\": \"TRACK-0001-NEW\",\n  \"address\": \"Carrera 45 #12-30, Medellín\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/shipment/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "shipment",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE shipment",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/shipment/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "shipment",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
